@@ -13,7 +13,7 @@ from unittest import TestCase
 IMG = "hello.png"
 
 
-class TestBanner(TestCase):
+class TestImage(TestCase):
     @classmethod
     def setUpClass(cls):
         i = PILImage.new('RGB', (100, 30), color=(73, 109, 137))
@@ -32,7 +32,7 @@ class TestBanner(TestCase):
         self.assertIsInstance(self.i.image, PILImage.Image)
         self.assertEqual(self.i.width, term_width())
         w, h = self.i.charsize
-        ar = (100.0 / w) / (30 / h)
+        ar = (100.0 / w) / (30.0 / h)
         self.assertEqual(self.i.height, round(term_width() / ar))
         self.i.height = 10
         self.assertEqual(self.i.width, round(self.i.height * ar))
@@ -48,7 +48,7 @@ class TestBanner(TestCase):
         try:
             self.i.font = "/does/not/exist"
             failed = True
-        except OSError:
+        except IOError:
             failed = False
         self.assertFalse(failed)
         try:

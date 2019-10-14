@@ -126,4 +126,4 @@ def main():
         f += ".asc"
         print(from_file(f))
     else:
-        raise OSError("'{}' does not exist".format(f))
+        raise IOError("'{}' does not exist".format(f))

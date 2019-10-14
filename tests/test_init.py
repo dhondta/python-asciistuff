@@ -71,7 +71,7 @@ class TestInit(TestCase):
     
     def test_main(self):
         sys.argv = ["asciistuff", "does_not_exist"]
-        self.assertRaises(OSError, main)
+        self.assertRaises(IOError, main)
         sys.argv = ["asciistuff", ASC]
         self.assertIsNone(main())
         sys.argv = ["asciistuff", os.path.splitext(ASC)[0]]

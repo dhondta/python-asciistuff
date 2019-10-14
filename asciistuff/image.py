@@ -123,8 +123,8 @@ class Image(Object):
         self.__brightness = 1
         self.__contrast = 1
         # as characters are not squares, take the character ratio into account
-        self.__size = [self.__img.size[0] / self.__charsize[0],
-                       self.__img.size[1] / self.__charsize[1]]
+        self.__size = [self.__img.size[0] / float(self.__charsize[0]),
+                       self.__img.size[1] / float(self.__charsize[1])]
         self.__aspectratio = self.__size[0] / float(self.__size[1])
     
     @property

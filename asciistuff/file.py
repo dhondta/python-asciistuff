@@ -152,7 +152,6 @@ class AsciiFile(object):
                     name, value = pair.split("=")
                     params[name.strip()] = value.strip()
                 AsciiFile.check_params(params)
-                print(params)
                 p[section] = params
             else:
                 s[section] += l + "\n"

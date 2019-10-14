@@ -12,7 +12,7 @@ ASC = "test.asc"
 BAD_SEC = "does-not-exist"
 
 
-class TestFile(TestCase):
+class TestAsciiFile(TestCase):
     @classmethod
     def setUpClass(cls):
         f = AsciiFile()
