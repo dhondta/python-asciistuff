@@ -1,0 +1,13 @@
+[run]
+source = asciistuff
+omit =
+    asciistuff/__info__.py
+    tests/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if.*?__name__.*?==.*?.__main__.:
+    except ImportError:
+    except NameError:
+    raise NotImplementedError
