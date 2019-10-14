@@ -44,7 +44,8 @@ class Image(Object):
         s, l = "", len(self.__charset)
         for y in range(h):
             for x in range(w):
-                s += self.__charset[round(pixels[x, y] / 255. * (l - 1) + 0.5)]
+                i = round(pixels[x, y] / 255. * (l - 1) + 0.5)
+                s += self.__charset[int(i)]
             s += "\n"
         # now remove every heading and trailing blank line
         if self.strip:
@@ -133,9 +134,9 @@ class Image(Object):
     
     @height.setter
     def height(self, value):
-        self.__size[1] = round(value or self.__size[1])
+        self.__size[1] = int(round(value or self.__size[1]))
         # adapt the width with the original aspect ratio
-        self.__size[0] = round(self.__size[1] * self.__aspectratio)
+        self.__size[0] = int(round(self.__size[1] * self.__aspectratio))
     
     @property
     def size(self):
@@ -151,6 +152,6 @@ class Image(Object):
     
     @width.setter
     def width(self, value):
-        self.__size[0] = round(value or self.__size[0])
+        self.__size[0] = int(round(value or self.__size[0]))
         # adapt the height with the original aspect ratio
-        self.__size[1] = round(self.__size[0] / self.__aspectratio)
+        self.__size[1] = int(round(self.__size[0] / self.__aspectratio))
