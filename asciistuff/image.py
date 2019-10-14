@@ -44,8 +44,8 @@ class Image(Object):
         s, l = "", len(self.__charset)
         for y in range(h):
             for x in range(w):
-                i = round(pixels[x, y] / 255. * (l - 1) + 0.5)
-                s += self.__charset[int(i)]
+                i = int(round(pixels[x, y] / 255. * (l - 1) + 0.5))
+                s += self.__charset[min(i, l - 1)]
             s += "\n"
         # now remove every heading and trailing blank line
         if self.strip:
