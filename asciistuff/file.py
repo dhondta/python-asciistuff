@@ -1,19 +1,17 @@
 # -*- coding: UTF-8 -*-
+import colorama
 from collections import OrderedDict
-try:
-    import colorama
-    _color_enabled = True
-    BGCOLORS = list(vars(colorama.Back).values())
-    BGCOLOR_NAMES = list(_.lower() for _ in vars(colorama.Back).keys())
-    FGCOLORS = list(vars(colorama.Fore).values())
-    FGCOLOR_NAMES = list(_.lower() for _ in vars(colorama.Fore).keys())
-except ImportError:
-    _color_enabled = False
 
 from .__common__ import *
 
 
 __all__ = ["AsciiFile"]
+
+
+BGCOLORS = list(vars(colorama.Back).values())
+BGCOLOR_NAMES = list(_.lower() for _ in vars(colorama.Back).keys())
+FGCOLORS = list(vars(colorama.Fore).values())
+FGCOLOR_NAMES = list(_.lower() for _ in vars(colorama.Fore).keys())
 
 DEFAULT_PARAMS = {'adjust': "center"}
 PARAM_VALUES = {
@@ -97,7 +95,7 @@ class AsciiFile(object):
                         for l in text.split("\n"):
                             s += center(l, term_width()) + "\n"
                     text = s
-                elif param in ["bgcolor", "fgcolor"] and _color_enabled:
+                elif param in ["bgcolor", "fgcolor"]:
                     if value == "random":
                         COLORS = [FGCOLORS, BGCOLORS][param == "bgcolor"]
                         _, it = "", iter(text)
@@ -121,7 +119,7 @@ class AsciiFile(object):
                     color_changed = True
             # then add the text to the final string
             t += text
-            if _color_enabled and color_changed:
+            if color_changed:
                 t += BGCOLORS[-3] + FGCOLORS[-3]
         return t + " "
     
