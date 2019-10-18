@@ -52,7 +52,7 @@ def get_banner(text=None, path=None, img_ext=(".jpg", ".jpeg", ".png"),
         if os.path.isdir(path):
             _ = [f for f in os.listdir(path) \
                  if os.path.isfile(os.path.join(path, f)) and \
-                 any(f.endswith(e) for e in (".asc", ) + img_ext)]
+                 any(f.endswith(e) for e in [".asc"] + list(img_ext))]
             if len(_) > 0:
                 path = os.path.join(path, random.choice(_))
         # now handle valid file extensions
