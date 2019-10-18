@@ -1,6 +1,6 @@
 colorama
 cowpy
 Pillow
-pyfiglet
+PyFiglet
 termcolor
 terminaltables
