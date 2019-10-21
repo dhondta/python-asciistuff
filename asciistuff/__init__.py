@@ -5,6 +5,8 @@ import random
 import string
 import warnings
 
+from .__info__ import __author__, __copyright__, __license__, __version__
+
 from .__common__ import FONTS
 from .banner import *
 from .banner import __all__ as _banner
