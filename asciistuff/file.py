@@ -68,7 +68,7 @@ class AsciiFile(object):
         return s
     
     def __setitem__(self, section, content):
-        params = DEFAULT_PARAMS
+        params = {k: v for k, v in DEFAULT_PARAMS.items()}
         if isinstance(section, (list, tuple)):
             section, _ = section
             AsciiFile.check_params(_)
