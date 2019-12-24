@@ -11,6 +11,20 @@
 
 This library gathers some useful ASCII art features relying on [PyFiglet](https://github.com/pwaller/pyfiglet), [Pillow](https://github.com/python-pillow/Pillow) and [cowpy](https://github.com/jeffbuttars/cowpy).
 
+## Setup
+
+This library is available on [PyPi](https://pypi.python.org/pypi/asciistuff/) and can be simply installed using Pip:
+
+```sh
+pip install asciistuff
+```
+
+or
+
+```sh
+pip3 install asciistuff
+```
+
 ## Objects
 
 ### Banner
