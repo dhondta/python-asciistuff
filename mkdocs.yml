@@ -12,4 +12,6 @@ extra:
 theme: readthedocs
 use_directory_urls: false
 markdown_extensions:
+  - toc:
+      permalink: true
   - admonition
