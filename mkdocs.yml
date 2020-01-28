@@ -1,5 +1,5 @@
 site_name: "ASCII Stuff"
-repo_url: https://github.com/dhondta/asciistuff
+repo_url: https://github.com/dhondta/python-asciistuff
 site_author: dhondta
 docs_dir: docs
 pages:
