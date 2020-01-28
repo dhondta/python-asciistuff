@@ -1,10 +1,10 @@
 [![PyPi](https://img.shields.io/pypi/v/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 [![Read The Docs](https://readthedocs.org/projects/asciistuff/badge/?version=latest)](https://asciistuff.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.org/dhondta/asciistuff.svg?branch=master)](https://travis-ci.org/dhondta/asciistuff)
-[![Coverage Status](https://coveralls.io/repos/github/dhondta/asciistuff/badge.svg?branch=master)](https://coveralls.io/github/dhondta/asciistuff?branch=master)
+[![Build Status](https://travis-ci.org/dhondta/python-asciistuff.svg?branch=master)](https://travis-ci.org/dhondta/python-asciistuff)
+[![Coverage Status](https://coveralls.io/repos/github/dhondta/python-asciistuff/badge.svg?branch=master)](https://coveralls.io/github/dhondta/python-asciistuff?branch=master)
 [![Python Versions](https://img.shields.io/pypi/pyversions/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
-[![Requirements Status](https://requires.io/github/dhondta/asciistuff/requirements.svg?branch=master)](https://requires.io/github/dhondta/asciistuff/requirements/?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/dhondta/asciistuff/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/dhondta/asciistuff?targetFile=requirements.txt)
+[![Requirements Status](https://requires.io/github/dhondta/python-asciistuff/requirements.svg?branch=master)](https://requires.io/github/dhondta/python-asciistuff/requirements/?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/dhondta/python-asciistuff/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/dhondta/python-asciistuff?targetFile=requirements.txt)
 [![License](https://img.shields.io/pypi/l/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 
 # ASCII Stuff
