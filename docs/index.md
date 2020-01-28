@@ -15,11 +15,11 @@ It also features an ASCII file format (`.asc`) with a small set of useful option
 This library is available on [PyPi](https://pypi.python.org/pypi/asciistuff/) and can be simply installed using Pip:
 
 ```sh
-sudo pip install asciistuff
+pip install asciistuff
 ```
 
 or
 
 ```sh
-sudo pip3 install asciistuff
+pip3 install asciistuff
 ```
