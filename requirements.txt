@@ -1,7 +1,0 @@
-colorama
-cowpy
-pillow==6.2.2; python_version<='2.7'
-pillow>=6.2.3; python_version>='3.5'
-PyFiglet
-termcolor
-terminaltables
