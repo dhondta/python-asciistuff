@@ -1,0 +1,7 @@
+colorama
+cowpy
+pillow==6.2.2; python_version=='2.7'  # last version with support for Python 2
+pillow>=6.2.3; python_version>='3.5'
+PyFiglet
+termcolor
+terminaltables
