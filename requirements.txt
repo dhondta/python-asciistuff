@@ -1,6 +1,6 @@
 colorama
 cowpy
-Pillow
+pillow>=6.2.3
 PyFiglet
 termcolor
 terminaltables
