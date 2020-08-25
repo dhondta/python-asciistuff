@@ -13,19 +13,11 @@ This library gathers some useful ASCII art features relying on [PyFiglet](https:
 
 ## Setup
 
-This library is available on [PyPi](https://pypi.python.org/pypi/asciistuff/) and can be simply installed using Pip:
-
 ```sh
 pip install asciistuff
 ```
 
-or
-
-```sh
-pip3 install asciistuff
-```
-
-## Objects
+## Usage
 
 ### Banner
 
