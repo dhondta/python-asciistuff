@@ -6,7 +6,6 @@ import string
 import warnings
 
 from .__info__ import __author__, __copyright__, __license__, __version__
-
 from .__common__ import FONTS
 from .banner import *
 from .banner import __all__ as _banner
@@ -20,29 +19,23 @@ from .quote import *
 from .quote import __all__ as _quote
 
 
-__all__ = _banner + _cowsay + _file + _image + _quote + \
-          ["from_file", "get_banner", "get_quote", "FONTS"]
+__all__ = _banner + _cowsay + _file + _image + _quote + ["from_file", "get_banner", "get_quote", "FONTS"]
 
 warnings.filterwarnings("ignore")
 
 
 def from_file(path=None):
-    """
-    Get an ASCII art from an ASCII file.
-    """
+    """ Get an ASCII art from an ASCII file. """
     return get_banner(path=path, img_ext=())
 
 
-def get_banner(text=None, path=None, img_ext=(".jpg", ".jpeg", ".png"),
-               styles={}):
-    """
-    Display an ASCII art from a given text and/or a path.
+def get_banner(text=None, path=None, img_ext=(".jpg", ".jpeg", ".png"), styles={}):
+    """ Display an ASCII art from a given text and/or a path.
     
     :param text:    text to be displayed
     :param path:    where a ASCII art could be found (folder or file)
     :param img_ext: image extensions to be considered (must be readable by PIL)
-    :param styles:  section styles, taking default sections "title" and "logo"
-                     into consideration
+    :param styles:  section styles, taking default sections "title" and "logo" into consideration
     """
     if path is None:
         if text is None:
@@ -52,8 +45,7 @@ def get_banner(text=None, path=None, img_ext=(".jpg", ".jpeg", ".png"),
     else:
         # if path is a folder, randomly choose a valid file
         if os.path.isdir(path):
-            _ = [f for f in os.listdir(path) \
-                 if os.path.isfile(os.path.join(path, f)) and \
+            _ = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f)) and \
                  any(f.endswith(e) for e in [".asc"] + list(img_ext))]
             if len(_) > 0:
                 path = os.path.join(path, random.choice(_))
@@ -81,9 +73,8 @@ def get_banner(text=None, path=None, img_ext=(".jpg", ".jpeg", ".png"),
 
 
 def get_quote(path="quotes.csv", style={}):
-    """
-    Get a random file from the given folder and, if it only consists of
-     printable characters, consider it as a banner to be returned.
+    """ Get a random file from the given folder and, if it only consists of printable characters, consider it as a
+         banner to be returned.
     
     :param folder: where the quotes.csv file shall be searched for
     :param style:  main section style
@@ -129,3 +120,4 @@ def main():
         print(from_file(f))
     else:
         raise IOError("'{}' does not exist".format(f))
+

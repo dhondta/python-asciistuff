@@ -15,12 +15,12 @@ FGCOLOR_NAMES = list(_.lower() for _ in vars(colorama.Fore).keys())
 
 DEFAULT_PARAMS = {'adjust': "center"}
 PARAM_VALUES = {
-    'adjust': ["left", "center", "right"],
+    'adjust':  ["left", "center", "right"],
     'bgcolor': ["random"] + BGCOLOR_NAMES,
     'fgcolor': ["random"] + FGCOLOR_NAMES,
 }
-SECTION_LINE = re.compile(r"^\.section\:\s(?P<section>[a-z0-9]+)(?:\[(?P"
-                        r"<params>([a-z]+\=[a-z]+)(\,[a-z]+\=[a-z]+)*)\])?\s*$")
+SECTION_LINE = re.compile(r"^\.section\:\s(?P<section>[a-z0-9]+)(?:\[(?P<params>([a-z]+\=[a-z]+)"
+                          r"(\,[a-z]+\=[a-z]+)*)\])?\s*$")
 
 center = lambda t, w: "\n".join(l.center(w) for l in t.split("\n"))
 
@@ -28,8 +28,7 @@ center = lambda t, w: "\n".join(l.center(w) for l in t.split("\n"))
 class AsciiFile(object):
     """ ASCII art custom file format (with sections).
     
-    This organizes ASCII art contents as sections in a custom file format for
-     applying different style parameters.
+    This organizes ASCII art contents as sections in a custom file format for applying different style parameters.
     
     :param path: path to the ASCII art file
     """
@@ -42,8 +41,7 @@ class AsciiFile(object):
         if isinstance(section, (list, tuple)):
             section = "\n".join(map(str, section))
         elif isinstance(section, dict):
-            section = "\n".join(".section: {}\n{}"
-                                .format(k, v) for k, v in section.items())       
+            section = "\n".join(".section: {}\n{}".format(k, v) for k, v in section.items())       
         else:
             section = str(section)
         self._parse(section)
@@ -59,9 +57,7 @@ class AsciiFile(object):
     def __repr__(self):
         s = ""
         for section, text in self.__sections.items():
-            p = ",".join("{}={}".format(k, v) for k, v in \
-                         self.__params[section].items() \
-                         if (k, v) not in DEFAULT_PARAMS.items())
+            p = ",".join("{}={}" % kv for kv in self.__params[section].items() if kv not in DEFAULT_PARAMS.items())
             p = ["", "[{}]".format(p)][len(p) > 0]
             s += ".section: {}{}\n".format(section, p)
             s += str(text) + "\n"
@@ -113,8 +109,7 @@ class AsciiFile(object):
                                 _ += choice(COLORS) + c
                         text = _
                     else:
-                        _ = getattr(colorama, ["Fore", "Back"] \
-                                              [param == "bgcolor"])
+                        _ = getattr(colorama, ["Fore", "Back"][param == "bgcolor"])
                         text = getattr(_, value.upper(), None) or "" + text
                     color_changed = True
             # then add the text to the final string
@@ -213,8 +208,7 @@ class AsciiFile(object):
             try:
                 choices = PARAM_VALUES[k]
             except KeyError:
-                raise ValueError("Bad parameter name [{}]"
-                                 .format("|".join(PARAM_VALUES.keys())))
+                raise ValueError("Bad parameter name [{}]".format("|".join(PARAM_VALUES.keys())))
             if v not in choices:
-                raise ValueError("Bad parameter value [{}]"
-                                 .format("|".join(choices)))
+                raise ValueError("Bad parameter value [{}]".format("|".join(choices)))
+

@@ -14,11 +14,9 @@ class Quote(Object):
     :param source: quote's source
     :param width:  desired text width in characters
     :param margin: margin [0, .5[
-    :param cowsay: cowsay settings ; character (cowacter) or 
-                                     (cowacter, dict of parameters)
+    :param cowsay: cowsay settings ; character (cowacter) or (cowacter, dict of parameters)
     """
-    def __init__(self, quote, source=None, width=term_width(), margin=.1,
-                 cowsay=None):
+    def __init__(self, quote, source=None, width=term_width(), margin=.1, cowsay=None):
         if not 0 <= margin < .5:
             raise ValueError("Bad margin value (should belong to [0,.5[)")
         self.quote = quote
@@ -33,8 +31,7 @@ class Quote(Object):
             t = strip_escape_codes(self.text)
             if isinstance(c, str):
                 t = str(Cowsay(t, self.width, c))
-            elif isinstance(c, (list, tuple)) and len(c) == 2 and \
-                 isinstance(c[1], dict):
+            elif isinstance(c, (list, tuple)) and len(c) == 2 and isinstance(c[1], dict):
                 t = str(Cowsay(t, self.width - 2, c[0], **c[1]))
             else:
                 raise ValueError("Bad cowsay parameters")
@@ -53,3 +50,4 @@ class Quote(Object):
         w = max(map(len, l))
         t += "\n" + colored(s, attrs=['dark']).rjust(w)
         return t
+

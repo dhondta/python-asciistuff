@@ -17,18 +17,14 @@ class Cowsay(Object):
     :param text:         text to be displayed
     :param width:        desired text width in characters
     :param cowacter:     cowsay character
-    :param autocowacter: automatically choose a replacement when the cowacter
-                          does not suit for rendering
+    :param autocowacter: automatically choose a replacement when the cowacter does not suit for rendering
     :param cowacterset:  set of cowacters to be considered
     :param options:      cowpy parameters
     """
-    def __init__(self, text, width=term_width(), cowacter=None,
-                 autocowacter=False, cowacterset=COWACTERS, **options):
+    def __init__(self, text, width=term_width(), cowacter=None, autocowacter=False, cowacterset=COWACTERS, **options):
         self.__cowacter = None
-        self.__cowacterset = [c for c in cowacterset \
-                              if Cowsay.cowacter_exists(c)]
-        self._autocowacter = cowacter is None or cowacter == "random" or \
-                             autocowacter
+        self.__cowacterset = [c for c in cowacterset if Cowsay.cowacter_exists(c)]
+        self._autocowacter = cowacter is None or cowacter == "random" or autocowacter
         self.width = width
         self.options = options
         self.text = text
@@ -48,8 +44,7 @@ class Cowsay(Object):
     
     def __render(self, cowacter=None, check=True, **options):
         t = "\n".join(wrap(self.text, width=self.width-6))
-        t = COWACTERS_OBJ[cowacter or self.cowacter] \
-            (**(options or self.options)).milk(t)
+        t = COWACTERS_OBJ[cowacter or self.cowacter](**(options or self.options)).milk(t)
         if check:
             Object.check_width(t, self.width)
         return t
@@ -94,8 +89,7 @@ class Cowsay(Object):
         self.__text = text
         self.__cowacters = [_ for _ in self.__cowacterset]
         if self.cowacter:
-            self.cowacter = self.cowacter  # check if the current cowacter still
-                                           #  applies given the new text
+            self.cowacter = self.cowacter  # check if the current cowacter still applies given the new text
     
     def refactor(self):
         _ = self._autocowacter
@@ -110,3 +104,4 @@ class Cowsay(Object):
             return True
         except KeyError:
             return False
+

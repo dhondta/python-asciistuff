@@ -12,25 +12,20 @@ class Banner(Object):
     
     This converts a text to an ASCII banner using PyFiglet.
      
-    This class is inspired from:
-      https://github.com/ajalt/pyasciigen/blob/master/asciigen.py
+    This class is inspired from: https://github.com/ajalt/pyasciigen/blob/master/asciigen.py
     
     :param text:       text to be displayed
     :param width:      desired width in characters
     :param font:       name of a custom font
-    :param multiline:  whether the output should be accepted even if the text is
-                        generated on multiple lines
-    :param autofont:   automatically choose a replacement when the font does not
-                        suit for rendering
+    :param multiline:  whether the output should be accepted even if the text is generated on multiple lines
+    :param autofont:   automatically choose a replacement when the font does not suit for rendering
     :param fontset:    set of fonts to be considered
     """
-    def __init__(self, text, width=term_width(), font=None, multiline=False,
-                 autofont=False, fontset=FONTS):
+    def __init__(self, text, width=term_width(), font=None, multiline=False, autofont=False, fontset=FONTS):
         self.__font = None
-        # this line does not immediately filter fonts with Banner.font_exists()
-        #  as, e.g. when fontset=FONTS, it takes a large amounts of time to test
-        #  all available fonts with PyFiglet ; therefore check 2 is needed in
-        #  font's property setter
+        # this line does not immediately filter fonts with Banner.font_exists() as, e.g. when fontset=FONTS, it takes a
+        #  large amounts of time to test all available fonts with PyFiglet ; therefore check 2 is needed in font's
+        #  property setter
         self.__fontset = fontset
         self._autofont = font is None or autofont
         self.width = width
@@ -51,8 +46,7 @@ class Banner(Object):
         return choice(self.__fonts)
     
     def __render(self, font=None, check=True):
-        t = str(Figlet(font=font or self.font, width=self.width) \
-                .renderText(self.text))
+        t = str(Figlet(font=font or self.font, width=self.width).renderText(self.text))
         if check:
             Object.check_width(t, self.width)
         return t
@@ -97,8 +91,7 @@ class Banner(Object):
                     if len(s.splitlines()) > int(h * 1.5):
                         raise CharNotPrinted("")
                 except CharNotPrinted:
-                    name = _raise_or_get("Font too big or text too large for a"
-                                         " single line")
+                    name = _raise_or_get("Font too big or text too large for a single line")
                     continue
             break
         self.__font = name
@@ -111,10 +104,9 @@ class Banner(Object):
     def text(self, text):
         if len(text) == 0:
             raise ValueError("Empty text")
-        # consider that, whatever the font, the text will always have a width of
-        #  at least 2 characters per letter ; therefore, in order to save time,
-        #  figlets computation can be spared by checking first the length with
-        #  regard to the width before setting any font with PyFiglet
+        # consider that, whatever the font, the text will always have a width of at least 2 characters per letter ;
+        #  therefore, in order to save time, figlets computation can be spared by checking first the length with regard
+        #  to the width before setting any font with PyFiglet
         if max(map(len, wrap(text))) > .5 * self.width:
             raise ValueError("Text is too big or width is too small")
         self.__text = text
@@ -122,8 +114,7 @@ class Banner(Object):
             raise ValueError("Empty font set")
         self.__fonts = [_ for _ in self.__fontset]
         if self.font:
-            self.font = self.font  # check if the current font still applies
-                                   #  given the new text
+            self.font = self.font  # check if the current font still applies given the new text
     
     def refactor(self):
         _ = self._autofont
@@ -142,3 +133,4 @@ class Banner(Object):
             except ValueError:
                 pass
             return False
+
