@@ -1,6 +1,5 @@
 colorama
 cowpy
-pillow==6.2.2; python_version=='2.7' # rq.filter: ==6.2.2
 pillow>=7.1.0; python_version>='3.5'
 PyFiglet
 termcolor
