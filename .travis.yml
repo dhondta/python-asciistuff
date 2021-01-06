@@ -90,7 +90,12 @@ install:
   - python -m pip install --upgrade pip
   - pip install nose
   - pip install coveralls
-  - pip install -r requirements.txt
+  - pip install colorama
+  - pip install cowpy
+  - pip install pillow
+  - pip install PyFiglet
+  - pip install termcolor
+  - pip install terminaltables
   - pip install .
 script: nosetests -v --with-coverage --cover-tests --cover-package asciistuff tests
 after_success: coveralls
