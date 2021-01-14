@@ -7,9 +7,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/dhondta/python-asciistuff/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/dhondta/python-asciistuff?targetFile=requirements.txt)
 [![License](https://img.shields.io/pypi/l/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 
-# ASCII Stuff
+## Introduction
 
-This library gathers some useful ASCII art features relying on [PyFiglet](https://github.com/pwaller/pyfiglet), [Pillow](https://github.com/python-pillow/Pillow) and [cowpy](https://github.com/jeffbuttars/cowpy).
+This library gathers some useful ASCII art features relying on [PyFiglet](https://github.com/pwaller/pyfiglet/), [Pillow](https://github.com/python-pillow/Pillow/) and [cowpy](https://github.com/jeffbuttars/cowpy/).
 
 ## Setup
 
