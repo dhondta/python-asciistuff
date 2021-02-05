@@ -45,23 +45,38 @@ jobs:
     - python: nightly
       arch: arm64
     - os: osx
-      language: objective-c
-      env: PYENV_VERSION=2.7.18
+      language: shell
+      env:
+        - PATH=/Users/travis/.pyenv/shims:$PATH
+        - PYENV_VERSION=2.7.18
+      before_install: travis_wait brew upgrade pyenv && pyenv install $PYENV_VERSION
     - os: osx
-      language: objective-c
-      env: PYENV_VERSION=3.6.8
-    - os: osx
-      osx_image: xcode11.3
-      language: objective-c
-      env: PYENV_VERSION=3.7.6
-    - os: osx
-      language: objective-c
-      osx_image: xcode11.3
-      env: PYENV_VERSION=3.8.1
+      language: shell
+      env:
+        - PATH=/Users/travis/.pyenv/shims:$PATH
+        - PYENV_VERSION=3.6.8
+      before_install: travis_wait brew upgrade pyenv && pyenv install $PYENV_VERSION
     - os: osx
       osx_image: xcode11.3
-      language: objective-c
-      env: PYENV_VERSION=3.9.0
+      language: shell
+      env:
+        - PATH=/Users/travis/.pyenv/shims:$PATH
+        - PYENV_VERSION=3.7.6
+      before_install: travis_wait brew upgrade pyenv && pyenv install $PYENV_VERSION
+    - os: osx
+      osx_image: xcode11.3
+      language: shell
+      env:
+        - PATH=/Users/travis/.pyenv/shims:$PATH
+        - PYENV_VERSION=3.8.1
+      before_install: travis_wait brew upgrade pyenv && pyenv install $PYENV_VERSION
+    - os: osx
+      osx_image: xcode11.3
+      language: shell
+      env:
+        - PATH=/Users/travis/.pyenv/shims:$PATH
+        - PYENV_VERSION=3.9.0
+      before_install: travis_wait brew upgrade pyenv && pyenv install $PYENV_VERSION
 cache: pip
 install:
   - python -m pip install --upgrade pip
