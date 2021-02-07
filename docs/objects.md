@@ -53,6 +53,10 @@ ValueError: Bad font name
 >>> 
 ```
 
+!!! note "Available fonts"
+    
+    The list of fonts with examples can be found [here](http://www.figlet.org/fontdb.cgi).
+
 ## `Cowsay`
 
 This object has the following options:
