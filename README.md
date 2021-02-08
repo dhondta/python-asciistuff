@@ -85,6 +85,10 @@ Creating a banner:
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*,*%@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 
+## Lolcat
+
+![](https://raw.githubusercontent.com/dhondta/python-asciistuff/master/docs/img/lolcat-example.png)
+
 ## Quote
 
 ```

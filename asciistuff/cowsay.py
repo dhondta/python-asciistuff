@@ -72,10 +72,9 @@ class Cowsay(Object):
             # 2. test for rendering the cowsay
             try:
                 self.__render(name)
+                break
             except ValueError as e:
                 name = _raise_or_get(str(e))
-                continue
-            break
         self.__cowacter = name
     
     @property

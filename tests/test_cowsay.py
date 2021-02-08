@@ -7,7 +7,7 @@ from asciistuff import *
 from unittest import TestCase
 
 
-TEXT = "text"
+TEXT         = "Text"
 BAD_COWACTER = "does_not_exist"
 
 
@@ -39,10 +39,9 @@ class TestCowsay(TestCase):
         self.assertRaises(ValueError, Cowsay, TEXT, 20, BAD_COWACTER)
         c = Cowsay(TEXT, 20, "default", True)
         c = Cowsay(TEXT, 20, BAD_COWACTER, True)
-        c = Cowsay(TEXT, 20, BAD_COWACTER, True,
-                   cowacterset=[BAD_COWACTER] + COWACTERS)
+        c = Cowsay(TEXT, 20, BAD_COWACTER, True, cowacterset=[BAD_COWACTER] + COWACTERS)
     
     def test_cowsay_cowacterset(self):
-        self.assertRaises(ValueError, Cowsay, TEXT, 50, "default", True,
-                          [BAD_COWACTER])
+        self.assertRaises(ValueError, Cowsay, TEXT, 50, "default", True, [BAD_COWACTER])
         self.assertRaises(ValueError, Cowsay, TEXT, 50, "default", True, [])
+

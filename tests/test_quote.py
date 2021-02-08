@@ -7,7 +7,7 @@ from asciistuff import *
 from unittest import TestCase
 
 
-TEXT = "text"
+TEXT = "Text"
 
 
 class TestQuote(TestCase):
@@ -24,3 +24,4 @@ class TestQuote(TestCase):
         self.assertRaises(ValueError, Quote, TEXT, None, 80, .1, "BAD")
         Quote(TEXT, cowsay=["default", {'thoughts': True}])
         self.assertRaises(ValueError, Quote, TEXT, None, 80, .1, {"test": []})
+

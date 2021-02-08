@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-"""Banner class tests.
+"""Image class tests.
 
 """
-import os
 from asciistuff import *
 from asciistuff.__common__ import term_width
+from os import remove
 from PIL import Image as PILImage, ImageDraw, ImageFont
 from unittest import TestCase
 
@@ -17,13 +17,12 @@ class TestImage(TestCase):
     @classmethod
     def setUpClass(cls):
         i = PILImage.new('RGB', (100, 30), color=(73, 109, 137))
-        d = ImageDraw.Draw(i)
-        d.text((10,10), "Hello World", fill=(255, 255, 0))
+        ImageDraw.Draw(i).text((10,10), "Hello World", fill=(255, 255, 0))
         i.save(IMG)
     
     @classmethod
     def tearDownClass(cls):
-        os.remove(IMG)
+        remove(IMG)
     
     def setUp(self):
         self.i = Image(IMG)
@@ -62,3 +61,4 @@ class TestImage(TestCase):
             self.i.brightness += .5
             self.i.contrast -= .1
             str(self.i)
+

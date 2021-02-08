@@ -90,10 +90,12 @@ class Banner(Object):
                     # then compare it with the height of the rendered text
                     if len(s.splitlines()) > int(h * 1.5):
                         raise CharNotPrinted("")
+                    break
                 except CharNotPrinted:
                     name = _raise_or_get("Font too big or text too large for a single line")
                     continue
-            break
+            else:
+                break
         self.__font = name
     
     @property

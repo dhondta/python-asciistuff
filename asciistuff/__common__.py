@@ -1,13 +1,14 @@
 # -*- coding: UTF-8 -*-
 import re
 from os.path import dirname, join
-from random import choice
+from random import choice, randint
 from terminaltables.terminal_io import terminal_size
 from termcolor import ATTRIBUTES, colored
 from textwrap import wrap
 
 
-__all__ = ["choice", "colored", "re", "strip_escape_codes", "term_width", "wrap", "Object", "ObjectTooLarge", "FONTS"]
+__all__ = ["choice", "colored", "randint", "re", "strip_escape_codes", "term_width", "wrap", "Object", "ObjectTooLarge",
+           "FONTS"]
 
 # little patch to available attributes ; may not work for some terminals
 ATTRIBUTES['italic'] = 3

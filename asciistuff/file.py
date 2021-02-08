@@ -100,7 +100,6 @@ class AsciiFile(object):
                                 c = next(it)
                                 while c != "m":
                                     c = next(it)
-                                continue
                             elif c in " '\"":
                                 _ += COLORS[-3] + c
                             elif c == "\n":

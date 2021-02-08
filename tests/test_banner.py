@@ -7,7 +7,7 @@ from asciistuff import *
 from unittest import TestCase
 
 
-TEXT = "text"
+TEXT     = "text"
 BAD_FONT = "does_not_exist"
 
 
@@ -22,8 +22,7 @@ class TestBanner(TestCase):
         for i in range(2 * len(TEXT), 24):
             self.assertRaises(ValueError, Banner, TEXT, i, "rounded")
         self.assertRaises(ValueError, Banner, TEXT, 20, "dotmatrix")
-        self.assertIsNotNone(Banner(TEXT, 20, "dotmatrix",
-                                    autofont=True))
+        self.assertIsNotNone(Banner(TEXT, 20, "dotmatrix", autofont=True))
         # setting a bad font
         try:
             b.font = BAD_FONT
@@ -39,8 +38,7 @@ class TestBanner(TestCase):
     def test_banner_parameters(self):
         # automatic font selection when bad one is given
         self.assertRaises(ValueError, Banner, TEXT, 20, BAD_FONT)
-        b = Banner(TEXT, 20, BAD_FONT, autofont=True,
-                   fontset=[BAD_FONT] + FONTS)
+        b = Banner(TEXT, 20, BAD_FONT, autofont=True, fontset=[BAD_FONT] + FONTS)
         # multiline banner support
         _ = TEXT + " " + TEXT
         self.assertRaises(ValueError, Banner, _, 25, "rounded")
@@ -52,7 +50,6 @@ class TestBanner(TestCase):
         self.assertRaises(ValueError, Banner, _, 25, "dotmatrix")
     
     def test_banner_fontset(self):
-        self.assertRaises(ValueError, Banner, TEXT, 50, "rounded", False, True,
-                          [BAD_FONT])
-        self.assertRaises(ValueError, Banner, TEXT, 50, "rounded", False, True,
-                          [])
+        self.assertRaises(ValueError, Banner, TEXT, 50, "rounded", False, True, [BAD_FONT])
+        self.assertRaises(ValueError, Banner, TEXT, 50, "rounded", False, True, [])
+
