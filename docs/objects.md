@@ -213,6 +213,19 @@ The following example shows attributes and methods' outputs as it appears using 
 [...]
 ```
 
+## `Lolcat`
+
+This object has the following options:
+
+- `mode` (`8`, `16` or `256` ; default is `256`): color mode to be used
+- `spread` (positive float ; default is `3.`): rainbow spread factor
+- `freq` (positive float ; default is `.1`): rainbow colors frequency
+- `seed` (integer ; default is `0`): seed for color randomization
+
+The following example shows attributes and methods' outputs as it appears using a terminal:
+
+![](img/lolcat-example.png)
+
 ## `Quote`
 
 This object has the following options:

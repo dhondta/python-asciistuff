@@ -15,11 +15,13 @@ from .file import *
 from .file import __all__ as _file
 from .image import *
 from .image import __all__ as _image
+from .lolcat import *
+from .lolcat import __all__ as _lolcat
 from .quote import *
 from .quote import __all__ as _quote
 
 
-__all__ = _banner + _cowsay + _file + _image + _quote + ["from_file", "get_banner", "get_quote", "FONTS"]
+__all__ = _banner + _cowsay + _file + _image + _lolcat + _quote + ["from_file", "get_banner", "get_quote", "FONTS"]
 
 warnings.filterwarnings("ignore")
 
