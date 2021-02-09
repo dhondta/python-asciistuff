@@ -84,3 +84,7 @@ class TestAsciiFile(TestCase):
         self.assertIsNone(self.f.param('test', 'fgcolor', "blue"))
         self.assertIsNone(self.f.param('test', 'bgcolor', "green"))
         self.assertIsNotNone(self.f.text)
+        p['fgcolor'] = "lolcat"
+        self.assertIsNone(self.f.__setitem__(['test', p], "TEST"))
+        self.assertIsNotNone(self.f.text)
+

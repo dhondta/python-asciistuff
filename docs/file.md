@@ -72,6 +72,7 @@ Examples:
 
 - `.section: title`
 - `.section: quote[bgcolor=blue]`
+- `.section: logo[fgcolor=lolcat]`
 - `.section: logo[adjust=left,fgcolor=random]`
 
 By default, when not specifying a section from the beginning of the file, the default section name is "`main`" and it has no styling.

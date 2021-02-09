@@ -3,6 +3,7 @@ import colorama
 from collections import OrderedDict
 
 from .__common__ import *
+from .lolcat import *
 
 
 __all__ = ["AsciiFile"]
@@ -17,7 +18,7 @@ DEFAULT_PARAMS = {'adjust': "center"}
 PARAM_VALUES = {
     'adjust':  ["left", "center", "right"],
     'bgcolor': ["random"] + BGCOLOR_NAMES,
-    'fgcolor': ["random"] + FGCOLOR_NAMES,
+    'fgcolor': ["lolcat", "random"] + FGCOLOR_NAMES,
 }
 SECTION_LINE = re.compile(r"^\.section\:\s(?P<section>[a-z0-9]+)(?:\[(?P<params>([a-z]+\=[a-z]+)"
                           r"(\,[a-z]+\=[a-z]+)*)\])?\s*$")
@@ -94,22 +95,27 @@ class AsciiFile(object):
                 elif param in ["bgcolor", "fgcolor"]:
                     if value == "random":
                         COLORS = [FGCOLORS, BGCOLORS][param == "bgcolor"]
-                        _, it = "", iter(text)
+                        s, it = "", iter(text)
                         for c in it:
                             if c in "\x9b\x1b":
                                 c = next(it)
                                 while c != "m":
                                     c = next(it)
                             elif c in " '\"":
-                                _ += COLORS[-3] + c
+                                s += COLORS[-3] + c
                             elif c == "\n":
-                                _ += c + COLORS[-3]
+                                s += c + COLORS[-3]
+                                Lolcat.ctr = (Lolcat.ctr + 1) % 256
                             else:
-                                _ += choice(COLORS) + c
-                        text = _
+                                s += choice(COLORS) + c
+                        text = s
+                    elif param == "fgcolor" and value == "lolcat":
+                        l = Lolcat(text)
+                        text = str(l)
                     else:
-                        _ = getattr(colorama, ["Fore", "Back"][param == "bgcolor"])
-                        text = getattr(_, value.upper(), None) or "" + text
+                        c = getattr(colorama, ["Fore", "Back"][param == "bgcolor"])
+                        Lolcat.ctr = (Lolcat.ctr + len(text.split("\n"))) % 256
+                        text = (getattr(c, value.upper(), None) or "") + text
                     color_changed = True
             # then add the text to the final string
             t += text

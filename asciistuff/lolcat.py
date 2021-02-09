@@ -34,14 +34,16 @@ class Lolcat(Object):
     :param seed:   seed for color randomization
     """
     mode = 16 if "ANSICON" in environ or environ.get('TERM', "xterm").endswith("-color") else 256
+    ctr = 0
     
-    def __init__(self, text, mode=None, spread=3., freq=.1, seed=0):
+    def __init__(self, text, mode=None, spread=3., freq=.1, seed=None):
         self.text = str(text)
         if mode is not None:
             self.mode = mode
         self.spread = spread
         self.freq = freq
-        self.seed = seed
+        if seed is not None:
+            self.seed = seed
     
     def __setattr__(self, name, value):
         if name in ["freq", "spread"] and (not isinstance(value, (float, int)) or value <= 0):
@@ -49,7 +51,9 @@ class Lolcat(Object):
         elif name == "mode" and value not in [8, 16, 256]:
             raise ValueError("Bad mode ; should 8, 16 or 256")
         elif name == "seed":
-            self.__n = randint(0, 256) if value == 0 else value % 256
+            if not isinstance(value, int):
+                raise ValueError("Bad seed ; should be an integer")
+            Lolcat.ctr = randint(0, 256) if value == 0 else value % 256
         elif name == "text" and len(value) == 0:
             raise ValueError("Empty text")
         super(Lolcat, self).__setattr__(name, value)
@@ -57,10 +61,9 @@ class Lolcat(Object):
     def __str__(self):
         s = ""
         for line in self.text.split("\n"):
-            self.__n += 1
             l = ""
             for i, char in enumerate(ANSI_REGEX.sub("", line.rstrip())):
-                r, g, b = rgb = rainbow(self.freq, self.__n + i / self.spread)
+                r, g, b = rgb = rainbow(self.freq, Lolcat.ctr + i / self.spread)
                 if self.mode in [8, 16]:
                     matches = [(distance(c, map(int, rgb)), i) for i, c in enumerate(ANSI_COLORS[:self.mode])]
                     matches.sort()
@@ -78,6 +81,8 @@ class Lolcat(Object):
                             sum([16] + [int(6 * float(v)/256) * m for v, m in zip(rgb, [36, 6, 1])])
                     seq = "38;5;%d" % color
                 l += "\x1b[%sm" % seq + char
+            Lolcat.ctr += 1
             s += l + "\n"
+        Lolcat.ctr += 1
         return s + "\x1b[0m"
 
