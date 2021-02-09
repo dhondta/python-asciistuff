@@ -80,14 +80,6 @@ jobs:
 cache: pip
 install:
   - python -m pip install --upgrade pip
-  - pip install nose
-  - pip install coveralls
-  - pip install colorama
-  - pip install cowpy
-  - pip install pillow
-  - pip install PyFiglet
-  - pip install termcolor
-  - pip install terminaltables
-  - pip install .
-script: nosetests -v --with-coverage --cover-tests --cover-package asciistuff tests
+  - pip install pytest pytest-cov coveralls colorama cowpy pillow PyFiglet termcolor terminaltables .
+script: pytest --cov=asciistuff --cov-report=term-missing tests
 after_success: coveralls
