@@ -1,6 +1,6 @@
 [![PyPi](https://img.shields.io/pypi/v/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 [![Read The Docs](https://readthedocs.org/projects/python-asciistuff/badge/?version=latest)](https://python-asciistuff.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.org/dhondta/python-asciistuff.svg?branch=master)](https://travis-ci.org/dhondta/python-asciistuff)
+[![Build Status](https://travis-ci.com/dhondta/python-asciistuff.svg?branch=master)](https://travis-ci.com/dhondta/python-asciistuff)
 [![Coverage Status](https://coveralls.io/repos/github/dhondta/python-asciistuff/badge.svg?branch=master)](https://coveralls.io/github/dhondta/python-asciistuff?branch=master)
 [![Python Versions](https://img.shields.io/pypi/pyversions/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 [![Requirements Status](https://requires.io/github/dhondta/python-asciistuff/requirements.svg?branch=master)](https://requires.io/github/dhondta/python-asciistuff/requirements/?branch=master)
