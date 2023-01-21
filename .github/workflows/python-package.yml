@@ -3,6 +3,9 @@
 
 name: Python package
 
+env:
+  package: asciistuff
+
 on:
   push:
     branches: [ "main" ]
@@ -23,20 +26,21 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Install ${{ env.package }}
       run: |
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest pytest-cov coverage
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt
+        pip install .
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test ${{ env.package }} with pytest
       run: |
-        pytest --doctest-modules --cov=.
+        pytest --cov=$package
   coverage:
     needs: build
     runs-on: ubuntu-latest
@@ -44,15 +48,16 @@ jobs:
       cov_badge_path: docs/coverage.svg
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
+    - name: Install ${{ env.package }}
       run: |
         python -m pip install --upgrade pip
         python -m pip install pytest pytest-cov coverage
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Get coverage report
+        pip install -r requirements.txt
+        pip install .
+    - name: Get coverage report for ${{ env.package }}
       run: |
-        coverage run -m pytest --cov=. tests
-    - name: Coverage Badge
+        coverage run -m pytest --cov=$package
+    - name: Coverage badge of ${{ env.package }}
       uses: tj-actions/coverage-badge-py@v1.8
       with:
         output: ${{ env.cov_badge_path }}
