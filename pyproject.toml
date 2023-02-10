@@ -3,7 +3,6 @@ requires = ["setuptools>=61.0", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
-readme = {file = ["README.md"]}
 version = {attr = "asciistuff.__info__.__version__"}
 
 [tool.setuptools.packages.find]
@@ -44,7 +43,11 @@ dependencies = [
   "termcolor",
   "terminaltables",
 ]
-dynamic = ["readme", "version"]
+dynamic = ["version"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
 
 [project.urls]
 documentation = "https://python-asciistuff.readthedocs.io/en/latest/?badge=latest"
