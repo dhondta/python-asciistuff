@@ -1,7 +1,7 @@
 site_author: dhondta
 site_name: "ASCIIstuff - A library for generating ASCII arts (banners, images, quotes)"
 repo_url: https://github.com/dhondta/python-asciistuff
-copyright: Copyright &copy; 2021-2022 Alexandre D'Hondt
+copyright: Copyright &copy; 2021-2023 Alexandre D'Hondt
 docs_dir: pages
 nav:
   - Introduction: index.md

@@ -10,7 +10,7 @@ on:
     branches:
     - main
     paths:
-    - **/VERSION.txt
+    - '**/VERSION.txt'
   workflow_run:
     workflows: ["build"]
     types: [completed]
@@ -25,11 +25,9 @@ jobs:
         fetch-depth: 0
     - name: Cleanup README
       run: |
-        sed -i 's/^##\s*:.*:\s*/## /g' README.md
+        sed -ri 's/^(##*)\s*:.*:\s*/\1 /g' README.md
         awk '{if (match($0,"## Supporters")) exit; print}' README.md > README
         mv -f README README.md
-        cat README.md
-        ls -lah
     - run: python3 -m pip install --upgrade build && python3 -m build
     - name: Upload ${{ env.package }} to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

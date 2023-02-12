@@ -86,7 +86,7 @@ Creating a banner:
 
 ### Lolcat
 
-![](https://raw.githubusercontent.com/dhondta/python-asciistuff/main/docs/img/lolcat-example.png)
+![](https://raw.githubusercontent.com/dhondta/python-asciistuff/main/docs/pages/img/lolcat-example.png)
 
 ### Quote
 
