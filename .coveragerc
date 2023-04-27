@@ -1,7 +1,7 @@
 [run]
 source = asciistuff
 omit =
-    asciistuff/__info__.py
+    src/asciistuff/__info__.py
     tests/*
 
 [report]
