@@ -2,6 +2,9 @@
 requires = ["setuptools>=61.0", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
 [tool.setuptools.dynamic]
 version = {attr = "asciistuff.__info__.__version__"}
 
@@ -16,17 +19,13 @@ authors = [
 description = "Library for producing ASCII arts from a text or an image"
 license = {file = "LICENSE"}
 keywords = ["python", "development", "programming", "ascii-art", "banner-generator", "quote-generator", "cowsay"]
-requires-python = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,<4"
+requires-python = ">=3.8,<4"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-  "Programming Language :: Python :: 2",
-  "Programming Language :: Python :: 2.7",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -35,10 +34,8 @@ classifiers = [
 ]
 dependencies = [
   "colorama",
-  "cowpy<=1.0.2; python_version=='2.7'",
-  "cowpy>=1.1.2; python_version>='3.6'",
-  "pillow==6.2.2; python_version=='2.7'",
-  "pillow>=8.2.0; python_version>='3.6'",
+  "cowpy>=1.1.2",
+  "pillow>=10.0.1",
   "PyFiglet",
   "termcolor",
   "terminaltables",
