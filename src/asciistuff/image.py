@@ -7,6 +7,13 @@ from .__common__ import *
 __all__ = ["Image"]
 
 
+# from Pillow 10, getsize is deprecated ; getbbox or getlength shall be used instead
+#  this monkey-patches the ImageFont class to avoid the issue
+_getsize = lambda self, text, *args, **kwargs: self.getbbox(text, *args, **kwargs)[-2:]
+if not hasattr(ImageFont.ImageFont, "getsize"):
+    ImageFont.ImageFont.getsize = _getsize
+
+
 class Image(Object):
     """ Image as an ASCII art.
     
@@ -21,6 +28,10 @@ class Image(Object):
     :param contrast:   image's contrast
     :param font:       name of a custom font
     :param charset:    character set for the ASCII art
+    
+    NB: system's fonts can be found back with e.g. the following commands:
+        >>> matplotlib.font_manager
+        >>> matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
     """
     def __init__(self, path, width=term_width(), brightness=None, contrast=None, font=None, charset=".,*@%#/( ",
                  strip=False):
@@ -37,7 +48,7 @@ class Image(Object):
     def __str__(self):
         w, h = self.__size
         # then resize the original image
-        pixels = self.__img.resize((w, h), PILImg.ANTIALIAS).convert("L").load()
+        pixels = self.__img.resize((w, h), PILImg.Resampling.LANCZOS).convert("L").load()
         # now build the output string
         s, l = "", len(self.__charset)
         for y in range(h):
@@ -103,11 +114,10 @@ class Image(Object):
     def font(self, font):
         self.__font = ImageFont.load_default() if font is None else ImageFont.load(font) if isinstance(font, str) else \
                       font if isinstance(font, ImageFont.ImageFont) else None
-        # get the size of a sample character
-        try:
-            self.__charsize = self.__font.getsize("X")
-        except AttributeError:
+        if self.__font is None:
             raise ValueError("Bad font")
+        # get the size of a sample character
+        self.__charsize = self.__font.getsize("X")
     
     @property
     def image(self):
