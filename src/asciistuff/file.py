@@ -87,10 +87,10 @@ class AsciiFile(object):
                     if value in ["left", "right"]:
                         m = ["rjust", "ljust"][value == "left"]
                         for l in text.split("\n"):
-                            s += getattr(l, m)(term_width()) + "\n"
+                            s += getattr(l, m)(get_terminal_size().columns) + "\n"
                     elif value == "center":
                         for l in text.split("\n"):
-                            s += center(l, term_width()) + "\n"
+                            s += center(l, get_terminal_size().columns) + "\n"
                     text = s
                 elif param in ["bgcolor", "fgcolor"]:
                     if value == "random":

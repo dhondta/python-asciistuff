@@ -16,12 +16,12 @@ class Quote(Object):
     :param margin: margin [0, .5[
     :param cowsay: cowsay settings ; character (cowacter) or (cowacter, dict of parameters)
     """
-    def __init__(self, quote, source=None, width=term_width(), margin=.1, cowsay=None):
+    def __init__(self, quote, source=None, width=None, margin=.1, cowsay=None):
         if not 0 <= margin < .5:
             raise ValueError("Bad margin value (should belong to [0,.5[)")
         self.quote = quote
         self.source = source or "unknown"
-        self.width = int(width * (1 - 2 * margin))
+        self.width = int((width or get_terminal_size().columns) * (1 - 2 * margin))
         self.cowsay = cowsay
         str(self)
     
@@ -43,11 +43,11 @@ class Quote(Object):
     @property
     def text(self):
         w = self.width-5
-        q = colored(self.quote, attrs=['italic'])
+        q = f"\x1b[3m{self.quote}\x1b[0m"
         t = "\"{}\",".format(q)
         l = wrap(t, w)
         t, s = Object.wrap(t, w), Object.wrap(self.source, w)
         w = max(map(len, l))
-        t += "\n" + colored(s, attrs=['dark']).rjust(w)
+        t += "\n" + f"\x1b[2m{s}\x1b[0m".rjust(w)
         return t
 

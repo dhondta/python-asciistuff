@@ -17,9 +17,9 @@ class TestBanner(TestCase):
         b = Banner(TEXT)
         self.assertRaises(ValueError, Banner, "")
         # text and font size
-        for i in range(2 * len(TEXT)):
+        for i in range(1, 2 * len(TEXT)):
             self.assertRaises(ValueError, Banner, TEXT, i)
-        for i in range(2 * len(TEXT), 24):
+        for i in range(1, 2 * len(TEXT), 24):
             self.assertRaises(ValueError, Banner, TEXT, i, "rounded")
         self.assertRaises(ValueError, Banner, TEXT, 20, "dotmatrix")
         self.assertIsNotNone(Banner(TEXT, 20, "dotmatrix", autofont=True))

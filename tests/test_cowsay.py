@@ -17,7 +17,7 @@ class TestCowsay(TestCase):
         c = Cowsay(TEXT)
         self.assertRaises(ValueError, Cowsay, "")
         # text and width
-        for i in range(80):
+        for i in range(1, 80):
             if i < 25:
                 self.assertRaises(ValueError, Cowsay, TEXT, i, "default")
             else:

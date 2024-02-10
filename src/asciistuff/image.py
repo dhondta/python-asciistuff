@@ -7,11 +7,16 @@ from .__common__ import *
 __all__ = ["Image"]
 
 
+FONT_TYPES = tuple([getattr(ImageFont, attr) for attr in dir(ImageFont) if attr.endswith("Font")])
 # from Pillow 10, getsize is deprecated ; getbbox or getlength shall be used instead
 #  this monkey-patches the ImageFont class to avoid the issue
 _getsize = lambda self, text, *args, **kwargs: self.getbbox(text, *args, **kwargs)[-2:]
-if not hasattr(ImageFont.ImageFont, "getsize"):
-    ImageFont.ImageFont.getsize = _getsize
+for font_type in FONT_TYPES:
+    if not hasattr(font_type, "getsize"):
+        font_type.getsize = _getsize
+
+
+is_PIL_font = lambda f: isinstance(f, FONT_TYPES)
 
 
 class Image(Object):
@@ -33,13 +38,12 @@ class Image(Object):
         >>> matplotlib.font_manager
         >>> matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
     """
-    def __init__(self, path, width=term_width(), brightness=None, contrast=None, font=None, charset=".,*@%#/( ",
-                 strip=False):
+    def __init__(self, path, width=None, brightness=None, contrast=None, font=None, charset=".,*@%#/( ", strip=False):
         # set the font and image first to reset every other parameter
         self.font = font
         self.image = str(path)
         # now set the parameters
-        self.width = width
+        self.width = width or get_terminal_size().columns
         self.contrast = contrast
         self.brightness = brightness
         self.charset = charset
@@ -113,7 +117,7 @@ class Image(Object):
     @font.setter
     def font(self, font):
         self.__font = ImageFont.load_default() if font is None else ImageFont.load(font) if isinstance(font, str) else \
-                      font if isinstance(font, ImageFont.ImageFont) else None
+                      font if is_PIL_font(font) else None
         if self.__font is None:
             raise ValueError("Bad font")
         # get the size of a sample character

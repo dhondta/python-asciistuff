@@ -37,8 +37,6 @@ dependencies = [
   "cowpy>=1.1.2",
   "pillow>=10.2.0",
   "PyFiglet",
-  "termcolor",
-  "terminaltables",
 ]
 dynamic = ["version"]
 

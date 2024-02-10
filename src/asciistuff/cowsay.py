@@ -21,11 +21,11 @@ class Cowsay(Object):
     :param cowacterset:  set of cowacters to be considered
     :param options:      cowpy parameters
     """
-    def __init__(self, text, width=term_width(), cowacter=None, autocowacter=False, cowacterset=COWACTERS, **options):
+    def __init__(self, text, width=None, cowacter=None, autocowacter=False, cowacterset=COWACTERS, **options):
         self.__cowacter = None
         self.__cowacterset = [c for c in cowacterset if Cowsay.cowacter_exists(c)]
         self._autocowacter = cowacter is None or cowacter == "random" or autocowacter
-        self.width = width
+        self.width = width or get_terminal_size().columns
         self.options = options
         self.text = text
         self.cowacter = cowacter

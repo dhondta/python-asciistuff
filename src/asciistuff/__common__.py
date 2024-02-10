@@ -2,17 +2,12 @@
 import re
 from os.path import dirname, join
 from random import choice, randint
-from terminaltables.terminal_io import terminal_size
-from termcolor import ATTRIBUTES, colored
+from shutil import get_terminal_size
 from textwrap import wrap
 
 
-__all__ = ["choice", "colored", "randint", "re", "strip_escape_codes", "term_width", "wrap", "Object", "ObjectTooLarge",
+__all__ = ["choice", "get_terminal_size", "randint", "re", "strip_escape_codes", "wrap", "Object", "ObjectTooLarge", \
            "FONTS"]
-
-# little patch to available attributes ; may not work for some terminals
-ATTRIBUTES['italic'] = 3
-ATTRIBUTES['strikethrough'] = 9
 
 
 with open(join(dirname(__file__), "fonts.txt")) as f:
@@ -20,7 +15,6 @@ with open(join(dirname(__file__), "fonts.txt")) as f:
 
 
 strip_escape_codes = lambda s: re.sub(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]", "", s)
-term_width = lambda: terminal_size()[0] or 79
 
 
 class Object(object):
@@ -29,15 +23,16 @@ class Object(object):
         return strip_escape_codes(str(self))
     
     @staticmethod
-    def check_width(text, width=term_width()):
+    def check_width(text, width=None):
         """ Generic method for checking if the ASCII art object does not exceed the configured width. """
+        width = width or get_terminal_size().columns
         if any(len(l) > width for l in text.splitlines()):
             raise ObjectTooLarge("Object does not fit the given width")
     
     @staticmethod
-    def wrap(text, width=term_width()):
+    def wrap(text, width=None):
         """ Simply return original wrap's result as a string. """
-        return "\n".join(wrap(text, width))
+        return "\n".join(wrap(text, width or get_terminal_size().columns))
 
 
 class ObjectTooLarge(ValueError):

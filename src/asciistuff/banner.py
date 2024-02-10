@@ -21,14 +21,14 @@ class Banner(Object):
     :param autofont:   automatically choose a replacement when the font does not suit for rendering
     :param fontset:    set of fonts to be considered
     """
-    def __init__(self, text, width=term_width(), font=None, multiline=False, autofont=False, fontset=FONTS):
+    def __init__(self, text, width=None, font=None, multiline=False, autofont=False, fontset=FONTS):
         self.__font = None
         # this line does not immediately filter fonts with Banner.font_exists() as, e.g. when fontset=FONTS, it takes a
         #  large amounts of time to test all available fonts with PyFiglet ; therefore check 2 is needed in font's
         #  property setter
         self.__fontset = fontset
         self._autofont = font is None or autofont
-        self.width = width
+        self.width = width or get_terminal_size().columns
         self.text = text
         self.multiline = multiline
         self.font = font

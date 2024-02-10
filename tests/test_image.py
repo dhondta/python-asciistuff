@@ -4,9 +4,10 @@
 
 """
 from asciistuff import *
-from asciistuff.__common__ import term_width
+from asciistuff.image import FONT_TYPES
 from os import remove
 from PIL import Image as PILImage, ImageDraw, ImageFont
+from shutil import get_terminal_size
 from unittest import TestCase
 
 
@@ -26,20 +27,20 @@ class TestImage(TestCase):
     
     def setUp(self):
         self.i = Image(IMG)
-
+    
     def test_image(self):
         self.assertIsInstance(self.i.image, PILImage.Image)
-        self.assertEqual(self.i.width, term_width())
+        self.assertEqual(self.i.width, get_terminal_size().columns)
         w, h = self.i.charsize
         ar = (100.0 / w) / (30.0 / h)
-        self.assertEqual(self.i.height, round(term_width() / ar))
+        self.assertEqual(self.i.height, round(get_terminal_size().columns / ar))
         self.i.height = 10
         self.assertEqual(self.i.width, round(self.i.height * ar))
         self.i.size = (100, 30)
         self.assertEqual(self.i.size, [100, 30])
         self.i.charset += "X"
         self.assertIsNotNone(str(self.i))
-        self.assertIsInstance(self.i.font, ImageFont.ImageFont)
+        self.assertIsInstance(self.i.font, FONT_TYPES)
         self.assertIsNotNone(repr(self.i))
     
     def test_image_parameters(self):
