@@ -30,9 +30,9 @@ classifiers = [
 ]
 dependencies = [
   "colorama",
-  "cowpy>=1.1.2",
-  "pillow>=10.2.0",
-  "PyFiglet",
+  "cowpy>=1.1.5",
+  "pillow>=11.2.0",
+  "PyFiglet>=1.0.3",
 ]
 dynamic = ["version"]
 
