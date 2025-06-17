@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/dhondta/python-asciistuff/raw/main/docs/pages/img/logo.png"></p>
+<p align="center" id="top"><img src="https://github.com/dhondta/python-asciistuff/raw/main/docs/pages/img/logo.png"></p>
 <h1 align="center">ASCIIstuff <a href="https://twitter.com/intent/tweet?text=ASCIIstuff%20-%20Fancy%20styled%20banner%20for%20your%20CLI%20tool.%0D%0APython%20library%20for%20making%20ASCII%20banners%20relying%20on%20PyFiglet,%20Pillow%20and%20cowpy.%0D%0Ahttps%3a%2f%2fgithub%2ecom%2fdhondta%2fpython-asciistuff%0D%0A&hashtags=python,programming,asciiart,banners"><img src="https://img.shields.io/badge/Tweet--lightgrey?logo=twitter&style=social" alt="Tweet" height="20"/></a></h1>
 <h3 align="center">Make a styled banner for your CLI tool.</h3>
 
@@ -129,4 +129,4 @@ file = AsciiFile("test.asc")
 
 [![Forkers repo roster for @dhondta/python-asciistuff](https://reporoster.com/forks/dark/dhondta/python-asciistuff)](https://github.com/dhondta/python-asciistuff/network/members)
 
-<p align="center"><a href="#"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
+<p align="center"><a href="#top"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
