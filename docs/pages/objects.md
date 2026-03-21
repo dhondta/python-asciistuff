@@ -55,7 +55,7 @@ ValueError: Bad font name
 
 !!! note "Available fonts"
     
-    The list of fonts with examples can be found [here](http://www.figlet.org/fontdb.cgi).
+    The list of fonts with examples can be found [here](https://www.figlet.org/cgi-bin/fontdb.cgi).
 
 ## `Cowsay`
 
