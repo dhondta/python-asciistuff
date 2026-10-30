@@ -12,7 +12,7 @@ It also features an ASCII file format (`.asc`) with a small set of useful option
 
 ## Setup
 
-This library is available on [PyPi](https://pypi.python.org/pypi/asciistuff/) and can be simply installed using Pip:
+This library requires Python 3.10 or later. It is available on [PyPi](https://pypi.python.org/pypi/asciistuff/) and can be simply installed using Pip:
 
 ```sh
 pip install asciistuff

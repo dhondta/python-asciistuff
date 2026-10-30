@@ -1,13 +1,17 @@
 site_author: dhondta
 site_name: "ASCIIstuff - A library for generating ASCII arts (banners, images, quotes)"
+site_description: Library for producing ASCII arts (banners, images, quotes) from a text or an image
+site_url: https://python-asciistuff.readthedocs.io
 repo_url: https://github.com/dhondta/python-asciistuff
-copyright: Copyright &copy; 2021-2023 Alexandre D'Hondt
+edit_uri: edit/main/docs/pages/
+copyright: Copyright &copy; 2021 Alexandre D'Hondt
 docs_dir: pages
 nav:
   - Introduction: index.md
   - ASCII objects: objects.md
   - ASCII file format: file.md
   - Helper functions: functions.md
+  - Contributing: contributing.md
 extra:
   generator: false
   social:
@@ -27,19 +31,31 @@ extra_css:
   - css/extra.css
 theme:
   name: material
+  logo: img/logo.png
+  favicon: img/icon.png
   palette:
     - scheme: default
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  logo: img/logo.png
-  favicon: img/icon.png
+  features:
+    - content.code.copy
+    - navigation.sections
+    - navigation.top
+    - toc.follow
 use_directory_urls: false
 markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - tables
   - toc:
       permalink: true
-  - admonition

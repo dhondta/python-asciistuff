@@ -5,6 +5,23 @@ build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 
+[tool.coverage.run]
+source = ["asciistuff"]
+omit = [
+  "src/asciistuff/__info__.py",
+  "tests/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+  'pragma: no cover',
+  'if.*?__name__.*?==.*?.__main__.:',
+  'def main\(\)\:',
+  'except ImportError:',
+  'except NameError:',
+  'raise NotImplementedError',
+]
+
 [tool.setuptools.dynamic]
 version = {attr = "asciistuff.__info__.__version__"}
 
@@ -19,7 +36,7 @@ authors = [
 description = "Library for producing ASCII arts from a text or an image"
 license = {file = "LICENSE"}
 keywords = ["python", "development", "programming", "ascii-art", "banner-generator", "quote-generator", "cowsay"]
-requires-python = ">=3.8,<4"
+requires-python = ">=3.10,<4"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",

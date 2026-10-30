@@ -3,11 +3,11 @@
 <h3 align="center">Make a styled banner for your CLI tool.</h3>
 
 [![PyPi](https://img.shields.io/pypi/v/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 [![Read The Docs](https://readthedocs.org/projects/python-asciistuff/badge/?version=latest)](https://python-asciistuff.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://github.com/dhondta/python-asciistuff/actions/workflows/python-package.yml/badge.svg)](https://github.com/dhondta/python-asciistuff/actions/workflows/python-package.yml)
-[![Coverage Status](https://raw.githubusercontent.com/dhondta/python-asciistuff/main/docs/coverage.svg)](#)
-[![Python Versions](https://img.shields.io/pypi/pyversions/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
-[![Known Vulnerabilities](https://snyk.io/test/github/dhondta/python-asciistuff/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/dhondta/python-asciistuff?targetFile=requirements.txt)
+[![Security](https://github.com/dhondta/python-asciistuff/actions/workflows/security.yml/badge.svg)](https://github.com/dhondta/python-asciistuff/actions/workflows/security.yml)
+[![Coverage Status](https://raw.githubusercontent.com/dhondta/python-asciistuff/coverage-badge/docs/coverage.svg)](#)
 [![License](https://img.shields.io/pypi/l/asciistuff.svg)](https://pypi.python.org/pypi/asciistuff/)
 
 This library gathers some useful ASCII art features relying on [PyFiglet](https://github.com/pwaller/pyfiglet/), [Pillow](https://github.com/python-pillow/Pillow/) and [cowpy](https://github.com/jeffbuttars/cowpy/).
@@ -122,11 +122,5 @@ file = AsciiFile("test.asc")
 
 ```
 
-
-## :clap:  Supporters
-
-[![Stargazers repo roster for @dhondta/python-asciistuff](https://reporoster.com/stars/dark/dhondta/python-asciistuff)](https://github.com/dhondta/python-asciistuff/stargazers)
-
-[![Forkers repo roster for @dhondta/python-asciistuff](https://reporoster.com/forks/dark/dhondta/python-asciistuff)](https://github.com/dhondta/python-asciistuff/network/members)
 
 <p align="center"><a href="#top"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
