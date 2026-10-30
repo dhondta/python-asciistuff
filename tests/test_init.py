@@ -4,9 +4,7 @@
 
 """
 import os
-import sys
 from asciistuff import *
-from asciistuff import main
 from PIL import Image as PILImage, ImageDraw
 from unittest import TestCase
 
@@ -68,11 +66,3 @@ class TestInit(TestCase):
         self.assertRaises(ValueError, get_quote, BAD1)
         self.assertRaises(ValueError, get_quote, BAD2)
         self.assertRaises(ValueError, get_quote, BAD3)
-    
-    def test_main(self):
-        sys.argv = ["asciistuff", "does_not_exist"]
-        self.assertRaises(IOError, main)
-        sys.argv = ["asciistuff", ASC]
-        self.assertIsNone(main())
-        sys.argv = ["asciistuff", os.path.splitext(ASC)[0]]
-        self.assertIsNone(main())

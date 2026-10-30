@@ -64,4 +64,4 @@ issues = "https://github.com/dhondta/python-asciistuff/issues"
 repository = "https://github.com/dhondta/python-asciistuff"
 
 [project.scripts]
-asciistuff = "asciistuff:main"
+asciistuff = "asciistuff.__main__:main"

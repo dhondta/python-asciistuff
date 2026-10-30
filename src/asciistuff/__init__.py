@@ -1,4 +1,3 @@
-import argparse
 import csv
 import os
 import random
@@ -107,19 +106,4 @@ def get_quote(path="quotes.csv", style={}):
     cowsay = style.get('cowsay')
     asc['main', style] = Quote(*quote, cowsay=cowsay)
     return str(asc)
-
-
-def main():
-    import argparse, os
-    parser = argparse.ArgumentParser()
-    parser.add_argument("ascii_file")
-    args = parser.parse_args()
-    f = args.ascii_file
-    if os.path.isfile(f):
-        print(from_file(f))
-    elif os.path.isfile(f + ".asc"):
-        f += ".asc"
-        print(from_file(f))
-    else:
-        raise IOError("'{}' does not exist".format(f))
 
